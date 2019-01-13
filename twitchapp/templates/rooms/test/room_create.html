@@ -1,0 +1,69 @@
+{% extends "rooms/room_base.html" %}
+
+{% block makeroom %}
+
+<div class="container jumbotron col-md-6 text-center">
+
+{# Form to enter stream name #}
+<label for="text">Enter stream name</label>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://www.twitch.tv/</span>
+  </div>
+  <input type="text"
+         class="form-control"
+         id="text"
+         aria-describedby="basic-addon3"
+         placeholder="antoniousmaximus">
+</div>
+<input type="button"
+       class='btn btn-info'
+       id='btn'
+       name=""
+       value="Hyah!" >
+
+<!-- <form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+
+</form>
+{# Submit Button #}
+<div class="">
+  <a href="{% url 'room-view' %}">
+  <button style=""class="btn btn-info" type="button" name="button">Hyah!</button>
+  </a>
+</div> -->
+
+</div>
+
+
+<script type="text/javascript">
+  document.getElementById('btn').onclick = function() {
+
+    var iframe = document.querySelector('iframe')
+   var newFrame = document.createElement('iframe');
+   newFrame.setAttribute('frameborder', '0');
+   newFrame.setAttribute('allowfullscreen', 'true');
+   newFrame.setAttribute('scrolling', 'no');
+   newFrame.setAttribute('height', '610');
+   newFrame.setAttribute('width', '1000');
+   newFrame.setAttribute('align', 'middle');
+   newFrame.src = 'https://player.twitch.tv/?channel=' + document.getElementById('text').value;
+   document.body.appendChild(newFrame);
+   if (iframe){
+     iframe.replaceWith(newFrame)
+   };
+
+  };
+</script>
+
+<div class="t-chat">
+<iframe src="https://www.twitch.tv/embed/antoniousmaximus/chat?darkpopout"
+        frameborder="0"
+        scrolling="no"
+        height="610"
+        width="500">
+</iframe>
+</div>
+
+{% endblock %}

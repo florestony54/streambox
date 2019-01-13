@@ -1,0 +1,51 @@
+{% extends "rooms/room_base.html" %}
+{% load static %}
+{% block vidblock %}
+
+    <h2 id="channel-title">You are now watching
+      <a id='twitch-link' href="https://www.twitch.tv/{{ channel.name }}">
+        <i class="fab fa-twitch"></i> {{ channel.name }}
+      </a>
+      on channel {{ channel.pk }}
+    </h2>
+    <div class="vid-player">
+      <iframe src="https://player.twitch.tv/?channel={{ channel.name }}"
+            onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
+            style="height: 750px;width:100%;border:none;overflow:hidden;"
+            frameborder="0"
+            allowfullscreen="true">
+      </iframe>
+    </div>
+
+    <div class="t-chat">
+    <iframe src="https://www.twitch.tv/embed/antoniousmaximus/chat?darkpopout"
+            onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
+            style="height: 750px;width:100%;border:none;overflow:hidden;"
+            frameborder="0"
+            allowfullscreen="true">
+    </iframe>
+    </div>
+
+    <button id='luck-btn' onclick="randomProperty()"class="btn btn-success" data-toggle="modal" data-target="#luck-modal" name="button">Test your luck?</button>
+    <!-- Modal -->
+    <div class="modal fade" id="luck-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">You roll: <span id='roll-num'></span> </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id='luck-modal-text' class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Now, tell your friends</button>
+          </div>
+        </div>
+      </div>
+    </div>
+<script type="text/javascript" src="{% static "test-luck-test.js" %}"></script>
+
+{% endblock %}

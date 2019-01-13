@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+
+    <input type="text" id='text' placeholder="Enter channel name">
+    <input type="button" id='btn' name="" value="Submit" >
+
+    <script type="text/javascript">
+      document.getElementById('btn').onclick = function() {
+
+        var iframe = document.querySelector('iframe')
+       var newFrame = document.createElement('iframe');
+       newFrame.src = 'https://player.twitch.tv/?channel=' + document.getElementById('text').value;
+       document.body.appendChild(newFrame);
+       if (iframe){
+         iframe.replaceWith(newFrame)
+       };
+
+      };
+    </script>
+
+    <iframe src="https://player.twitch.tv/?channel=imaqtpie" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:500px;width:75%;border:none;overflow:hidden;"></iframe>
+  </body>
+
+</html>
