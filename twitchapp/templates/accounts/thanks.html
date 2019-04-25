@@ -1,0 +1,11 @@
+{% extends "rooms/room_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron container">
+
+
+  <h4>Successfully logged out. Thanks for visiting!</h4>
+  <a class="btn btn-info btn-lg" href="{% url 'land-view' %}" role="button">Return Home</a>
+</div>
+{% endblock %}

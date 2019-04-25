@@ -1,0 +1,23 @@
+{% extends "rooms/room_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron container">
+  <h1>Login</h1>
+  <form method="POST">
+    {% csrf_token %}
+
+      {{ form }}
+
+    <input type="submit" class="btn btn-info" value="Login">
+    <p>
+      Don't have an account?
+      <a href= "{% url 'accounts:signup' %}">Sign up here!</a>
+    </p>
+
+
+  </form>
+</div>
+
+<script type="text/javascript" src="{% static 'login.js' %}"></script>
+{% endblock %}

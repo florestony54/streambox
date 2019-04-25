@@ -1,0 +1,60 @@
+{% extends "rooms/room_base.html" %}
+
+{% block vidblock %}
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">https://www.twitch.tv/</span>
+  </div>
+<input type="text" class='form-control' id='text' placeholder="antoniousmaximus">
+<div class="input-group-append">
+  <input type="button" class='btn btn-info' id='btn' name="" value="For Demacia!" >
+</div>
+
+</div>
+<div class="wrapper">
+
+
+  <div class="vid-player">
+    <iframe src="https://player.twitch.tv/?channel=cohhcarnage"
+          onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
+          style="height: 750px;width:100%;border:none;overflow:hidden;"
+          frameborder="0"
+          allowfullscreen="true">
+    </iframe>
+  </div>
+
+  <div class="t-chat">
+  <iframe src="https://www.twitch.tv/embed/antoniousmaximus/chat?darkpopout"
+          onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));'
+          style="height: 750px;width:100%;border:none;overflow:hidden;"
+          frameborder="0"
+          allowfullscreen="true">
+  </iframe>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.getElementById('btn').onclick = function() {
+
+   var iframe = document.querySelector('iframe')
+   var newFrame = document.createElement('iframe');
+
+   newFrame.setAttribute('frameborder', '0');
+   newFrame.setAttribute('allowfullscreen', 'true');
+   newFrame.setAttribute('onload',
+                         'javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));')
+   newFrame.setAttribute('style', "height: 610px;width:100%;border:none;overflow:hidden;")
+   // newFrame.setAttribute('scrolling', 'no');
+   // newFrame.setAttribute('height', '610');
+   // newFrame.setAttribute('width', '1000');
+   // newFrame.setAttribute('align', 'middle');
+   newFrame.src = 'https://player.twitch.tv/?channel=' + document.getElementById('text').value;
+   document.body.appendChild(newFrame);
+   if (iframe){
+     iframe.replaceWith(newFrame)
+   };
+  };
+</script>
+
+{% endblock %}

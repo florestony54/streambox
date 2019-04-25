@@ -1,0 +1,30 @@
+{% extends "rooms/room_video.html" %}
+{% load static %}
+{% block vidblock %}
+
+
+
+<div class="jumbotron container col-md-6 text-center">
+
+  <form class="channel-form" method="POST">
+    <label id='enter-text' for="basic-url">
+      <i id='i-twitch' class="fab fa-twitch" style="color: Mediumslateblue;"></i> Enter stream name
+    </label>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class='input-group-text' id='basic-addon3' for="">https://www.twitch.tv/</span>
+        {% csrf_token %}
+        {{ form.as_p }}
+      </div>
+    </div>
+
+    <button id='target' type="submit" class="btn btn-info" name="button">For Demacia!</button>
+
+  </form>
+
+  <button id='btn-switch' type="button" class="btn btn-dark" onclick="newTitle()"><i class="fas fa-sync-alt"></i></button>
+
+</div>
+  <script type="text/javascript" src="{% static "channel-form.js" %}"></script>
+{% endblock %}

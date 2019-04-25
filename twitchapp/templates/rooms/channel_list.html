@@ -1,0 +1,19 @@
+{% extends "rooms/room_video.html" %}
+{% load static %}
+{% block vidblock %}
+
+<div class="container jumbotron">
+  <h1 id='channel-head'>Browse Available Channels</h1>
+  <hr id='my-4'></hr>
+  <ul>
+  {% for channel in channel_list %}
+  <a href="{% url 'channel-view' pk=channel.pk %}">
+    <div id='channel-list-container' class="alert alert-primary">
+        <h4 id='channel-list'>Channel {{ channel.pk }}: {{ channel.name }}</h4>
+    </div>
+  </a>
+  {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
