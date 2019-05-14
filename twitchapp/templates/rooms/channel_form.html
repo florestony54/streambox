@@ -1,23 +1,19 @@
-{% extends "rooms/room_video.html" %}
+{% extends "rooms/room_base.html" %}
 {% load static %}
 {% block vidblock %}
 
 
-
 <div class="jumbotron container col-md-6 text-center">
 
+  <div class="card bg-dark">
+    <div class="card-body">Enter the username of the streamer you'd like to watch,
+      then enter your Twitch username to host the chat.</div>
+  </div>
+  
   <form class="channel-form" method="POST">
-    <label id='enter-text' for="basic-url">
-      <i id='i-twitch' class="fab fa-twitch" style="color: Mediumslateblue;"></i> Enter stream name
-    </label>
 
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class='input-group-text' id='basic-addon3' for="">https://www.twitch.tv/</span>
-        {% csrf_token %}
-        {{ form.as_p }}
-      </div>
-    </div>
+    {% csrf_token %}
+    {{ form.as_p }}
 
     <button id='target' type="submit" class="btn btn-info" name="button">For Demacia!</button>
 
