@@ -9,6 +9,8 @@ class Channel(models.Model):
     user = models.ForeignKey(User, related_name='channels',
                             on_delete=models.CASCADE)
     name = models.CharField('', max_length=55)
+    
+    chat = models.CharField('', max_length=55)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
